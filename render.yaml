@@ -12,6 +12,8 @@ services:
         fromDatabase:
           name: puihaha-electric-db
           property: connectionString
+      - key: RENDER_INITIAL_DATA_B64
+        sync: false
 
 databases:
   - name: puihaha-electric-db
