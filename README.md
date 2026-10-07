@@ -28,9 +28,9 @@ MariaDB; the Render deployment uses an external Aiven MySQL service.
 7. Import `database/puihaha_electric_company_schema.sql`.
    To load the professor's 25 sample customer records, also import the
    `customer_accounts` insert statement from `database/customer_accounts_seed.sql`.
-8. Open `http://localhost/Codeigniter/PuihahaElectricCompany/setup` and create your administrator account.
+8. Open `http://localhost/Codeigniter/PuihahaElectricCompany/register` and create your account.
 9. Open `http://localhost/Codeigniter/PuihahaElectricCompany/` to view the main website.
-10. Select **Staff Login** and use the administrator account you created.
+10. Select **Staff Login** and use the username and password you registered.
 
 The `.env` file is local and is excluded from the repository. Use `env` as the
 template and update the database settings for your machine.
@@ -48,10 +48,10 @@ Import `database/puihaha_electric_company_schema.sql` into the Aiven database
 before opening a database-backed route. The free Render web service sleeps
 after inactivity, so its first request may take about a minute.
 
-On a fresh database, create the first staff login at `/setup`. After a staff
-account exists, `/setup` redirects to `/login`. Any existing local staff or
-registered customer data must be imported privately; it is not part of the
-public source repository.
+Create an account at `/register`; the same username and password work on
+`/login`. The legacy `/setup` URL redirects to registration. Any existing local
+staff or registered customer data must be imported privately; it is not part
+of the public source repository.
 
 ## Main routes
 
@@ -59,9 +59,9 @@ public source repository.
 - `GET /about` - company information
 - `GET /services` - electrical services
 - `GET|POST /contact` - contact form stored in `contact_messages`
-- `GET|POST /register` - customer registration stored in `users`
+- `GET|POST /register` - customer registration plus login credential creation
 - `GET /login` - login form
-- `GET|POST /setup` - one-time administrator creation on a fresh database
+- `GET|POST /setup` - legacy redirect to `/register`
 - `POST /login` - authenticate user
 - `GET /dashboard` and `GET /customers` - protected customer list
 - `GET /customers/new` and `POST /customers` - create
