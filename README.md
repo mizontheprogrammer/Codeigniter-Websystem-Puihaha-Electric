@@ -1,7 +1,8 @@
 # Puihaha Electric Company
 
 A CodeIgniter 4 company website with a separate customer account management
-system connected to the `electric_company` MariaDB database.
+system connected to the `electric_company` database. Local development uses
+MariaDB; the Render deployment uses PostgreSQL.
 
 ## Features
 
@@ -25,12 +26,31 @@ system connected to the `electric_company` MariaDB database.
 5. Start Apache and MySQL in XAMPP.
 6. In phpMyAdmin, create a database named `electric_company`.
 7. Import `database/puihaha_electric_company_schema.sql`.
+   To load the professor's 25 sample customer records, also import the
+   `customer_accounts` insert statement from `database/customer_accounts_seed.sql`.
 8. Open `http://localhost/Codeigniter/PuihahaElectricCompany/setup` and create your administrator account.
 9. Open `http://localhost/Codeigniter/PuihahaElectricCompany/` to view the main website.
 10. Select **Staff Login** and use the administrator account you created.
 
-The `.env` file is already configured for the default XAMPP database account:
-username `root` with no password. Update it if your MySQL setup is different.
+The `.env` file is local and is excluded from the repository. Use `env` as the
+template and update the database settings for your machine.
+
+## Render deployment
+
+`render.yaml` provisions the PHP web service and a PostgreSQL database in
+Singapore. The Docker image serves `public/` on port 10000. On startup,
+`database/init_render.php` creates the four application tables and imports the
+25 sample customer records once. The database connection is passed through
+Render's `DATABASE_URL` environment variable; no credentials are committed.
+
+The free Render PostgreSQL plan expires after 30 days. Upgrade the database
+before then if the site must remain available longer. The free web service
+also sleeps after inactivity, so its first request may take about a minute.
+
+On a fresh database, create the first staff login at `/setup`. After a staff
+account exists, `/setup` redirects to `/login`. Any existing local staff or
+registered customer data must be imported privately; it is not part of the
+public source repository.
 
 ## Main routes
 

@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: puihaha-electric
+    runtime: docker
+    plan: free
+    region: singapore
+    healthCheckPath: /
+    envVars:
+      - key: CI_ENVIRONMENT
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: puihaha-electric-db
+          property: connectionString
+
+databases:
+  - name: puihaha-electric-db
+    databaseName: electric_company
+    plan: free
+    region: singapore
+    ipAllowList: []

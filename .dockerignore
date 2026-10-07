@@ -1,0 +1,13 @@
+.git
+.env
+.vercel
+work
+tests
+build
+database/electric_company_original.sql
+database/puihaha_electric_company.sql
+writable/cache/*
+writable/debugbar/*
+writable/logs/*
+writable/session/*
+writable/uploads/*
