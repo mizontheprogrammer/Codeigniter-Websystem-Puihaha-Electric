@@ -9,23 +9,23 @@ services:
       - key: CI_ENVIRONMENT
         value: production
 
-      - key: database.default.hostname
+      - key: database_default_hostname
         sync: false
 
-      - key: database.default.database
+      - key: database_default_database
         sync: false
 
-      - key: database.default.username
+      - key: database_default_username
         sync: false
 
-      - key: database.default.password
+      - key: database_default_password
         sync: false
 
-      - key: database.default.DBDriver
+      - key: database_default_DBDriver
         value: MySQLi
 
-      - key: database.default.port
+      - key: database_default_port
         value: "10816"
 
-      - key: database.default.encrypt
+      - key: database_default_encrypt
         value: "true"

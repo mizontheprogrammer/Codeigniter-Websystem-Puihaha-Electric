@@ -1,8 +1,8 @@
 # Puihaha Electric Company
 
 A CodeIgniter 4 company website with a separate customer account management
-system connected to the `electric_company` database. Local development uses
-MariaDB; the Render deployment uses PostgreSQL.
+system connected to a MySQL-compatible database. Local development uses
+MariaDB; the Render deployment uses an external Aiven MySQL service.
 
 ## Features
 
@@ -37,15 +37,16 @@ template and update the database settings for your machine.
 
 ## Render deployment
 
-`render.yaml` provisions the PHP web service and a PostgreSQL database in
-Singapore. The Docker image serves `public/` on port 10000. On startup,
-`database/init_render.php` creates the four application tables and imports the
-25 sample customer records once. The database connection is passed through
-Render's `DATABASE_URL` environment variable; no credentials are committed.
+`render.yaml` provisions the PHP web service in Singapore and serves `public/`
+on port 10000. The application connects to an external Aiven MySQL service.
+During the initial Render Blueprint setup, provide the Aiven host, database,
+username, and password for the `database_default_*` variables marked
+`sync: false`. The driver, port, and TLS setting are declared in the Blueprint.
+No credentials are committed.
 
-The free Render PostgreSQL plan expires after 30 days. Upgrade the database
-before then if the site must remain available longer. The free web service
-also sleeps after inactivity, so its first request may take about a minute.
+Import `database/puihaha_electric_company_schema.sql` into the Aiven database
+before opening a database-backed route. The free Render web service sleeps
+after inactivity, so its first request may take about a minute.
 
 On a fresh database, create the first staff login at `/setup`. After a staff
 account exists, `/setup` redirects to `/login`. Any existing local staff or

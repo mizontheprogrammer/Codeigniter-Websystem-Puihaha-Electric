@@ -2,33 +2,12 @@
 
 require_once __DIR__ . '/../app/Polyfills/Locale.php';
 
-// Render supplies a PostgreSQL connection URL and the public site URL.
-// Keep the existing local MySQL configuration when these are absent.
+// Render supplies the public site URL. Database settings are provided through
+// the database_default_* environment variables declared in render.yaml.
 $renderUrl = getenv('RENDER_EXTERNAL_URL');
 if ($renderUrl !== false && $renderUrl !== '') {
     $_ENV['app_baseURL'] = $_SERVER['app_baseURL'] = rtrim($renderUrl, '/') . '/';
     $_ENV['app_indexPage'] = $_SERVER['app_indexPage'] = '';
-}
-
-$databaseUrl = getenv('DATABASE_URL');
-if ($databaseUrl !== false && $databaseUrl !== '') {
-    $database = parse_url($databaseUrl);
-    if ($database === false || ! isset($database['host'], $database['user'], $database['path'])) {
-        throw new RuntimeException('Invalid DATABASE_URL configuration.');
-    }
-
-    $settings = [
-        'DBDriver' => 'Postgre',
-        'hostname' => $database['host'],
-        'port'     => (string) ($database['port'] ?? 5432),
-        'database' => ltrim($database['path'], '/'),
-        'username' => rawurldecode($database['user']),
-        'password' => rawurldecode($database['pass'] ?? ''),
-    ];
-
-    foreach ($settings as $key => $value) {
-        $_ENV['database_default_' . $key] = $_SERVER['database_default_' . $key] = $value;
-    }
 }
 
 /*
