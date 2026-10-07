@@ -6,7 +6,7 @@
     <title><?= esc($title ?? 'Puihaha Electric') ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <link href="<?= base_url('public/assets/css/public-site.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/css/public-site.css') ?>" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
@@ -35,6 +35,6 @@
         </div><hr><p class="mb-0">&copy; <?= date('Y') ?> Puihaha Electric. All rights reserved.</p>
     </div></footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= base_url('public/assets/js/public-site.js') ?>"></script>
+    <script src="<?= base_url('assets/js/public-site.js') ?>"></script>
 </body>
 </html>

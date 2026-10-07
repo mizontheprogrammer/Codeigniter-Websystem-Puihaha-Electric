@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+require_once __DIR__ . '/app/Polyfills/Locale.php';
+
 /**
  * This file is part of CodeIgniter 4 framework.
  *

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= esc($title) ?> | Puihaha Electric Company</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="<?= base_url('public/style/loginview_cs.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('style/loginview_cs.css') ?>">
 </head>
 <body class="blue-mode">
     <?php if (session()->getFlashdata('error')): ?>
@@ -53,6 +53,6 @@
         </div>
     </div>
 
-    <script src="<?= base_url('public/javascript/login_js.js') ?>"></script>
+    <script src="<?= base_url('javascript/login_js.js') ?>"></script>
 </body>
 </html>

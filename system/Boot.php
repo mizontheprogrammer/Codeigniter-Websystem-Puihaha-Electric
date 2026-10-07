@@ -264,7 +264,6 @@ class Boot
         $missingExtensions = [];
 
         foreach ([
-            'intl',
             'json',
             'mbstring',
         ] as $extension) {

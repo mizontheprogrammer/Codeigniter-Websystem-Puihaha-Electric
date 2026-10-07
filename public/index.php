@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../app/Polyfills/Locale.php';
+
 /*
  *---------------------------------------------------------------
  * CHECK PHP VERSION

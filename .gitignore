@@ -1,5 +1,6 @@
 # Local environment settings
 .env
+public/null/
 
 # CodeIgniter runtime files
 writable/cache/*
